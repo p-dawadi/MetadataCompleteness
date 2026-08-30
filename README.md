@@ -8,6 +8,44 @@ between geographic origin and phylogenetic position.
 [AUTHOR TO CONFIRM: manuscript title, author list, and journal/DOI once
 assigned — add a "How to cite" section below once available.]
 
+## Pipeline overview
+
+1. **Retrieval** — `code/Strepto_1200to_1700bp.py` queries NCBI Nucleotide
+   (`Streptococcus anginosus[Organism] AND 1200:1700[Sequence Length]`,
+   accessed January 2026) and exports every returned record to
+   `results/Strepto_1200to_1700bp.csv` (see `docs/retrieval_flow_diagram.png`,
+   Additional File 2, for the full retrieval/inclusion accounting: 350
+   substantive records, one non-data row dropped).
+2. **Metadata curation** — host, geographic origin, and sample source are
+   extracted and standardized by hand into `data/curated_metadata.csv`
+   (rules documented in `docs/data_dictionary.md`), producing the 350
+   curated records used throughout the manuscript.
+3. **16S screening (SILVA)** — the 350 curated records, plus four additional
+   GenBank *S. anginosus* 16S rRNA records found not to have been added to
+   the curated table (PX419550, PX419553, PX419555, PX419685), are screened
+   against the SILVA ribosomal RNA gene database to confirm 16S rRNA gene
+   identity, giving the 354-sequence candidate set in
+   `alignment/Sp_16S_clean_SILVA.fasta`.
+4. **Alignment** — MAFFT v7.526 (UGENE desktop v53.1) aligns those 354
+   sequences de novo, with no external reference sequences added, producing
+   `alignment/Aligned.Strepto.aln` (2,310 columns).
+5. **Model selection & tree inference** — IQ-TREE 2.4.0 / ModelFinder select
+   K2P+R2 (by BIC) and reconstruct the maximum-likelihood tree with 10,000
+   ultrafast bootstrap replicates (`phylogenetics/final_tree/`).
+6. **Downstream analyses** (`code/`, output in `results/`) — a topology-based
+   Fitch parsimony/permutation test for geographic association
+   (`parsimony_permutation_test.py`), a type-strain identity check
+   (`type_strain_identity_check.py`), a composition-anomaly check on the
+   four sequences that failed IQ-TREE's composition test
+   (`composition_anomaly_check.py`), an alignment-occupancy/trimming check
+   (`alignment_occupancy_check.py`), a bootstrap-support-distribution
+   summary (`bootstrap_support_distribution.py`), and a check that every
+   tip label is accounted for with no unexplained sequences
+   (`check_no_reference_sequences.py`).
+7. **Figures** — `code/make_metadata_figures.py` builds the five main-text
+   metadata-completeness/breakdown charts in `figures/` directly from
+   `data/curated_metadata.csv`.
+
 ## Repository structure
 
 ```
@@ -33,14 +71,19 @@ manuscript/      Manuscript (clean and tracked-changes) and the reviewer respons
 
 ### `alignment/`
 
+- `Sp_16S_clean_SILVA.fasta` — the SILVA-screened candidate set (354
+  unaligned 16S rRNA sequences, 1,207-1,573 bp) that was the direct input to
+  MAFFT: the 350 curated records plus the four additional GenBank records
+  (see `data/`), screened against the SILVA ribosomal RNA gene database to
+  confirm 16S rRNA gene identity before alignment (see manuscript Methods:
+  Sequence alignment). Its 354 accessions match `Aligned.Strepto.aln`'s 354
+  tip labels exactly.
 - `Aligned.Strepto.aln` — the final multiple sequence alignment (354
   sequences, 2,310 aligned positions), built de novo with MAFFT v7.526 in
-  UGENE desktop (v53.1) among the retrieved sequences themselves. The
-  candidate sequences were screened against the SILVA ribosomal RNA gene
-  database beforehand to confirm 16S rRNA gene identity (see manuscript
-  Methods: Sequence alignment); SILVA was not itself the MAFFT alignment
-  reference, and no SILVA reference sequences are present among the 354
-  aligned/tree sequences (see `code/check_no_reference_sequences.py`) —
+  UGENE desktop (v53.1) from `Sp_16S_clean_SILVA.fasta`. SILVA was used only
+  for the screening step above, not as the MAFFT alignment reference itself,
+  and no SILVA reference sequences are present among the 354 aligned/tree
+  sequences (see `code/check_no_reference_sequences.py`) — this alignment is
   used as input to IQ-TREE.
 
 ### `phylogenetics/`
@@ -65,6 +108,13 @@ manuscript/      Manuscript (clean and tracked-changes) and the reviewer respons
 
 ### `code/`
 
+- `Strepto_1200to_1700bp.py` — the NCBI Entrez retrieval script itself: runs
+  the documented search (`Streptococcus anginosus[Organism] AND
+  1200:1700[Sequence Length]`, accessed January 2026; see Additional File 2
+  for the full retrieval/inclusion flow) and exports the returned records.
+  Its raw output is `results/Strepto_1200to_1700bp.csv`; the curated,
+  analysis-ready version (with host/geographic-origin/sample-source
+  annotations added) is `data/curated_metadata.csv`.
 - `country_mapping.py` — maps the free-text `Geographical location` metadata
   field to a standardized country name, and flags records where the country
   was inferred from a submitting institution rather than stated directly.
