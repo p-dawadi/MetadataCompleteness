@@ -191,28 +191,12 @@ already-verified totals.
 - `retrieval_flow_diagram.png` — the sequence-retrieval flow diagram
   (Additional File 2 in the manuscript).
 
-### `manuscript/`
-
-- `Streptococcus_anginosus_manuscript_clean.docx` — manuscript with all
-  tracked changes accepted (submission-ready main manuscript file).
-- `Streptococcus_anginosus_manuscript_tracked_changes.docx` — the same
-  manuscript with full tracked-changes markup against the original submission
-  (for editor/reviewer reference). Page/line numbers cited in the response
-  letter refer to this file, using its own built-in line numbering (restarts
-  at 1 on each page).
-- `Streptococcus_anginosus_manuscript_clean_colored-edits.docx` — the same
-  final text as the clean file, but with every added/edited passage shown in
-  blue (no strikethrough, no change bars) so a reader can see at a glance
-  what changed without wading through full track-changes markup.
-- `Response_to_Editor_and_Reviewers.docx` — the point-by-point response to
-  the editor's decision letter and all four reviewers, with a manuscript
-  page/line citation under each resolved item.
 
 ## Reproducing the analysis
 
 ```bash
-git clone [AUTHOR TO CONFIRM: repository URL]
-cd [AUTHOR TO CONFIRM: repository name]
+git clone https://github.com/p-dawadi/MetadataCompleteness.git
+cd MetadataCompleteness
 pip install -r requirements.txt
 cd code
 python parsimony_permutation_test.py                       # full dataset
