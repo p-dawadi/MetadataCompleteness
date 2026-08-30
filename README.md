@@ -5,9 +5,6 @@ study of publicly available *Streptococcus anginosus* 16S rRNA gene sequences
 (1200–1700 bp) retrieved from NCBI Nucleotide, testing for an association
 between geographic origin and phylogenetic position.
 
-[AUTHOR TO CONFIRM: manuscript title, author list, and journal/DOI once
-assigned — add a "How to cite" section below once available.]
-
 ## Pipeline overview
 
 1. **Retrieval** — `code/Strepto_1200to_1700bp.py` queries NCBI Nucleotide
