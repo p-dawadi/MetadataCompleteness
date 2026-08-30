@@ -1,0 +1,6 @@
+--- Full dataset ---
+n_tips=274  n_states=19  observed_score=103
+null: mean=173.53 sd=3.60 min=159 max=186  (n_perm=9999)
+empirical p-value: < 0.00010
+observed / null_mean = 59.4%
+

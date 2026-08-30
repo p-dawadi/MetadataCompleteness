@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N iqtree_job
+#PBS -M pdawadi@go.olemiss.edu
+#PBS -m abe
+#PBS -l nodes=1:ppn=8
+#PBS -l mem=16gb
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -V
+
+cd $PBS_O_WORKDIR
+
+/ddnlus/r3130/miniconda3/envs/iqtree/bin/iqtree2 \
+  -s Aligned.Strepto.aln \
+  -m K2P+R2 \
+  -nt 8 \
+  -bb 10000 \
+  -redo \
+  -safe
+

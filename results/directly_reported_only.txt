@@ -1,0 +1,6 @@
+--- Directly-reported locations only ---
+n_tips=237  n_states=14  observed_score=71
+null: mean=137.80 sd=3.52 min=124 max=148  (n_perm=9999)
+empirical p-value: < 0.00010
+observed / null_mean = 51.5%
+

@@ -1,0 +1,6 @@
+--- Leave-major-study-out ---
+n_tips=146  n_states=19  observed_score=72
+null: mean=93.91 sd=2.26 min=84 max=100  (n_perm=9999)
+empirical p-value: < 0.00010
+observed / null_mean = 76.7%
+

@@ -1,0 +1,11 @@
+Dataset-wide (n=354): mean GC = 52.22% (SD 0.86); mean ambiguous-base content = 0.036%
+
+Flagged (composition-test-failing) sequences:
+accession                 len     GC%  GC z-score   ambig%  longest exact repeat (bp)
+NZ_JAQMKN010000038.1     1522   49.93       -2.65    0.000                          0
+PVSY01000043.1           1207   38.53      -15.87    0.000                         40
+QSDO01000081.1           1403   52.25        0.03    0.000                         20
+VYVX01000034.1           1277   47.22       -5.79    0.000                         20
+
+For comparison, dataset-wide GC z-score distribution (all 354 sequences):
+  min z = -15.87, max z = 1.45, n with |z| > 2 = 3 of 354
