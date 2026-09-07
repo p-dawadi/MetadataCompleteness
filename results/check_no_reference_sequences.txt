@@ -1,7 +1,0 @@
-Alignment/tree tip labels: 354
-Curated study accessions: 350
-Matched to curated dataset: 350
-Matched to known additional GenBank records: 4
-Unexplained labels (would indicate leftover reference/other sequences): 0
-
-Result: every tip is accounted for. No external reference sequences (SILVA or otherwise) are themselves present as tips in the final alignment/tree -- consistent with an alignment built from the retrieved sequences, with SILVA used only as a screening step to confirm 16S rRNA gene identity beforehand (see manuscript Methods: Sequence alignment), not as a source of added reference sequences.

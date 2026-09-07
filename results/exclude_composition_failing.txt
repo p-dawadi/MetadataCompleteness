@@ -1,6 +1,0 @@
---- Excluding composition-test-failing sequences ---
-n_tips=271  n_states=19  observed_score=102
-null: mean=170.84 sd=3.57 min=154 max=183  (n_perm=9999)
-empirical p-value: < 0.00010
-observed / null_mean = 59.7%
-
