@@ -189,7 +189,7 @@ python code/bootstrap_support_distribution.py trees/346_sensitivity/tree_346_sen
 
 ## Dependencies
 
-- Python 3 with `biopython`, `pandas`, `requests`, `dendropy`
+- Python 3 with `biopython`, `pandas`, `dendropy`
 - [MAFFT](https://mafft.cbrc.jp/alignment/software/) (command-line)
 - [IQ-TREE](http://www.iqtree.org/) 3.1.3
 - BLAST+ (for the SILVA screening step)
