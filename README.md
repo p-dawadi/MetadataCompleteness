@@ -1,223 +1,228 @@
-# *Streptococcus anginosus* 16S rRNA phylogeography
+# *Streptococcus anginosus* 16S rRNA Metadata Completeness & Phylogenetic Structure — Analysis Pipeline
 
-Data, alignment, phylogenetic tree, analysis code, and manuscript files for a
-study of publicly available *Streptococcus anginosus* 16S rRNA gene sequences
-(1200–1700 bp) retrieved from NCBI Nucleotide, testing for an association
-between geographic origin and phylogenetic position.
-
-## Pipeline overview
-
-1. **Retrieval** — `code/Strepto_1200to_1700bp.py` queries NCBI Nucleotide
-   (`Streptococcus anginosus[Organism] AND 1200:1700[Sequence Length]`,
-   accessed January 2026) and exports every returned record to
-   `results/Strepto_1200to_1700bp.csv` (see `docs/retrieval_flow_diagram.png`,
-   Additional File 2, for the full retrieval/inclusion accounting: 350
-   substantive records, one non-data row dropped).
-2. **Metadata curation** — host, geographic origin, and sample source are
-   extracted and standardized by hand into `data/curated_metadata.csv`
-   (rules documented in `docs/data_dictionary.md`), producing the 350
-   curated records used throughout the manuscript.
-3. **16S screening (SILVA)** — the 350 curated records, plus four additional
-   GenBank *S. anginosus* 16S rRNA records found not to have been added to
-   the curated table (PX419550, PX419553, PX419555, PX419685), are screened
-   against the SILVA ribosomal RNA gene database to confirm 16S rRNA gene
-   identity, giving the 354-sequence candidate set in
-   `alignment/Sp_16S_clean_SILVA.fasta`.
-4. **Alignment** — MAFFT v7.526 (UGENE desktop v53.1) aligns those 354
-   sequences de novo, with no external reference sequences added, producing
-   `alignment/Aligned.Strepto.aln` (2,310 columns).
-5. **Model selection & tree inference** — IQ-TREE 2.4.0 / ModelFinder select
-   K2P+R2 (by BIC) and reconstruct the maximum-likelihood tree with 10,000
-   ultrafast bootstrap replicates (`phylogenetics/final_tree/`).
-6. **Downstream analyses** (`code/`, output in `results/`) — a topology-based
-   Fitch parsimony/permutation test for geographic association
-   (`parsimony_permutation_test.py`), a type-strain identity check
-   (`type_strain_identity_check.py`), a composition-anomaly check on the
-   four sequences that failed IQ-TREE's composition test
-   (`composition_anomaly_check.py`), an alignment-occupancy/trimming check
-   (`alignment_occupancy_check.py`), a bootstrap-support-distribution
-   summary (`bootstrap_support_distribution.py`), and a check that every
-   tip label is accounted for with no unexplained sequences
-   (`check_no_reference_sequences.py`).
-7. **Figures** — `code/make_metadata_figures.py` builds the five main-text
-   metadata-completeness/breakdown charts in `figures/` directly from
-   `data/curated_metadata.csv`.
+This repository contains the analysis pipeline, curated data, alignments, tree files, and
+supporting scripts behind the manuscript *"Metadata Completeness and Phylogenetic Structure
+of Publicly Available Streptococcus anginosus 16S rRNA Gene Sequences"* (BMC Microbiology,
+under review). It does **not** include the manuscript text itself — only the underlying
+data and code needed to reproduce and verify the reported analyses.
 
 ## Repository structure
 
 ```
-data/            Curated metadata (350 records), accession list, raw working copy
-alignment/       Final multiple sequence alignment (FASTA) used for tree inference
-phylogenetics/   IQ-TREE / ModelFinder outputs: final ML tree, run logs, PBS job scripts
-code/            Python analysis scripts (country mapping, parsimony/permutation test)
-results/         Output of the parsimony/permutation test, all four analysis variants
-figures/         Main-text Figures 1-5 (metadata completeness / breakdown charts)
-docs/            Data dictionary documenting all fields and derived columns
-manuscript/      Manuscript (clean and tracked-changes) and the reviewer response letter
+code/                            Analysis scripts (run from inside this folder)
+  1_retrieve_sequences.py          Step 1: NCBI retrieval
+  4_alignment_stats.py             Step 4: alignment statistics
+  5_alignment_occupancy_check.py   Step 5: alignment trimming/occupancy check
+  country_mapping.py               Geographic-location -> country standardization (imported by other scripts)
+  composition_anomaly_check.py     Network-free composition/assembly QC on the 4 flagged records
+  check_no_reference_sequences.py  Confirms no external/reference sequences leaked into the tip set
+  parsimony_permutation_test.py    Fitch parsimony / permutation test (country vs. topology)
+  phylo_uncertainty_check.py       Same test repeated across all UFBoot trees
+  topology_comparison.py           Robinson-Foulds distance between the two trees
+  bootstrap_support_distribution.py  UFBoot support-value summary
+
+data/
+  curated_metadata.csv             Curated metadata table (350 records)
+  sequences/
+    Strepto_350_curated_only.fasta   All 350 curated records
+    Strepto_346_excl_outliers.fasta  346 records (350 minus the 4 composition-failing WGS contigs)
+  alignments/
+    Aligned_350_primary.fasta        MAFFT alignment, 350-record dataset
+    Aligned_346_sensitivity.fasta    MAFFT alignment, 346-record dataset
+  silva_screening/
+    silva_hits.tsv                   BLAST hits vs. the SILVA SSU rRNA reference database
+    silva_best_hits.tsv              Best hit per query
+
+trees/
+  350_primary/                     IQ-TREE output, primary (350-record) analysis
+  346_sensitivity/                 IQ-TREE output, sensitivity (346-record) analysis, plus
+                                    phylo_uncertainty_346.log (bootstrap-tree uncertainty result)
 ```
 
-### `data/`
+## Workflow
 
-- `curated_metadata.xlsx` / `curated_metadata.csv` — the 350 curated records
-  (accession, title, sequence length, sample source, NCBI link, geographic
-  location, host, source article). See [`docs/data_dictionary.md`](docs/data_dictionary.md)
-  for column definitions.
-- `accession_list.txt` — the 350 accession numbers, one per line.
-- `raw_working_metadata_PRE-PUBLICATION.xlsx` — the original working
-  spreadsheet (with curation color-coding), kept for audit-trail purposes.
+### 1. Sequence retrieval
+`code/1_retrieve_sequences.py` retrieves *Streptococcus anginosus* 16S rRNA records from
+NCBI Nucleotide via Biopython's Entrez module (one record at a time, with retry/resume
+logic for unreliable network conditions), restricted to sequences 1,200–1,700 bp in
+length, then tabulates results with pandas.
 
-### `alignment/`
-
-- `Sp_16S_clean_SILVA.fasta` — the SILVA-screened candidate set (354
-  unaligned 16S rRNA sequences, 1,207-1,573 bp) that was the direct input to
-  MAFFT: the 350 curated records plus the four additional GenBank records
-  (see `data/`), screened against the SILVA ribosomal RNA gene database to
-  confirm 16S rRNA gene identity before alignment (see manuscript Methods:
-  Sequence alignment). Its 354 accessions match `Aligned.Strepto.aln`'s 354
-  tip labels exactly.
-- `Aligned.Strepto.aln` — the final multiple sequence alignment (354
-  sequences, 2,310 aligned positions), built de novo with MAFFT v7.526 in
-  UGENE desktop (v53.1) from `Sp_16S_clean_SILVA.fasta`. SILVA was used only
-  for the screening step above, not as the MAFFT alignment reference itself,
-  and no SILVA reference sequences are present among the 354 aligned/tree
-  sequences (see `code/check_no_reference_sequences.py`) — this alignment is
-  used as input to IQ-TREE.
-
-### `phylogenetics/`
-
-- `final_tree/` — the maximum-likelihood tree (`Aligned.Strepto.aln.treefile`,
-  Newick format, ultrafast-bootstrap support values annotated at internal
-  nodes; IQ-TREE 2.4.0, K2P+R2 substitution model, 10,000 ultrafast
-  bootstrap replicates — `run_iqtree.pbs` shows the exact command,
-  `iqtree -s Aligned.Strepto.aln -m K2P+R2 -nt 8 -bb 10000 -redo -safe`),
-  the full IQ-TREE run report (`.iqtree`), the UFBoot consensus tree
-  (`.contree`) and split support file (`.splits.nex`), run log, PBS job
-  script, and job stdout.
-- `modelfinder/` — a separate, earlier exploratory run (`iqtree -m MFP -nt
-  AUTO`, no bootstrap) used only for substitution-model comparison across
-  AIC/AICc/BIC; not the run used for any reported tree or support value.
-  Because this run predates the composition-based sequence review, it
-  reports 189 near-zero internal branches rather than the 195 reported in
-  the manuscript and in `final_tree/` — both are real IQ-TREE outputs, just
-  from two different runs; the manuscript's figure (195) is always the one
-  from the final bootstrap run in `final_tree/`, which is the one used
-  throughout the analysis.
-
-### `code/`
-
-- `Strepto_1200to_1700bp.py` — the NCBI Entrez retrieval script itself: runs
-  the documented search (`Streptococcus anginosus[Organism] AND
-  1200:1700[Sequence Length]`, accessed January 2026; see Additional File 2
-  for the full retrieval/inclusion flow) and exports the returned records.
-  Its raw output is `results/Strepto_1200to_1700bp.csv`; the curated,
-  analysis-ready version (with host/geographic-origin/sample-source
-  annotations added) is `data/curated_metadata.csv`.
-- `country_mapping.py` — maps the free-text `Geographical location` metadata
-  field to a standardized country name, and flags records where the country
-  was inferred from a submitting institution rather than stated directly.
-  Run directly (`python country_mapping.py`) for a self-test summary.
-- `parsimony_permutation_test.py` — the topology-based Fitch parsimony /
-  label-permutation test for association between country of origin and tree
-  topology (see [`results/parsimony_test_results.md`](results/parsimony_test_results.md)
-  for the full method description and results). Run with `--help` for all
-  options.
-- `type_strain_identity_check.py` — computes ungapped pairwise percent
-  identity, directly from the alignment, of every curated sequence against
-  the two *S. anginosus* type-strain records already present in the dataset
-  (`AF104678.1` / ATCC 33397 and `NR_041722.2` / SK52 = DSM 20563). A
-  network-free substitute for BLAST/type-strain verification (see
-  [`results/type_strain_identity_check.txt`](results/type_strain_identity_check.txt)).
-- `composition_anomaly_check.py` — for the four sequences that failed
-  IQ-TREE's composition-homogeneity test, computes GC content (vs. the
-  dataset-wide distribution), ambiguous-base content, and the longest exact
-  internal repeat, as a further network-free inspection for signs of
-  misassembly (see [`results/composition_anomaly_check.txt`](results/composition_anomaly_check.txt)).
-- `check_no_reference_sequences.py` — confirms that all 354 tip labels in
-  the final alignment/tree match either a curated study accession or one of
-  the four known additional GenBank records, with zero unexplained
-  sequences — consistent with an alignment built solely from the retrieved
-  sequences, with no external reference sequences added (see
-  [`results/check_no_reference_sequences.txt`](results/check_no_reference_sequences.txt)).
-- `alignment_occupancy_check.py` — computes per-column sequence occupancy
-  across the alignment to check for trimming: a trimming tool would remove
-  sparsely occupied columns, and hundreds remain (806 of 2,310 columns below
-  10% occupancy), indicating the alignment is MAFFT's untrimmed default
-  output (see [`results/alignment_occupancy_check.txt`](results/alignment_occupancy_check.txt)).
-- `bootstrap_support_distribution.py` — parses the UFBoot support value
-  annotated at every internal node of `phylogenetics/final_tree/Aligned.Strepto.aln.treefile`
-  and reports the full distribution (range, mean, median) and the
-  proportion of branches exceeding common support thresholds (50/70/80/90/95/99/100%),
-  distinguishing branches with an explicit support value from zero-length,
-  unlabeled branches within near-identical-sequence clusters (see
-  [`results/bootstrap_support_distribution.txt`](results/bootstrap_support_distribution.txt)).
-
-### `results/`
-
-- `parsimony_test_results.md` — combined results table and interpretation for
-  all four analysis variants (full dataset; excluding the four
-  composition-test-failing sequences; leave-major-study-out; directly-reported
-  locations only).
-- `full_dataset.txt`, `exclude_composition_failing.txt`,
-  `leave_major_study_out.txt`, `directly_reported_only.txt` — raw console
-  output from each run.
-
-### `figures/`
-
-- `Figure1_metadata_completeness_bar.png` / `Figure2_metadata_completeness_pies.png`
-  — reported-vs-missing metadata counts for sample source, geographic
-  origin, and host (n=350), as a bar chart and as three pie charts.
-- `Figure3_geographic_origin_by_country.png` — geographic origin by country
-  among the 274 records with reported location (19 countries).
-- `Figure4_host_category.png` — host category among the 292 records with
-  reported host metadata (289 human, 1 dog, 1 sea water, 1 wastewater).
-- `Figure5_sample_source_by_category.png` — sample source among the 242
-  records with reported source metadata, grouped into 9 clinical/anatomical
-  categories.
-
-All five were generated by `code/make_metadata_figures.py` directly from
-`data/curated_metadata.csv` (and, for Figure 3, `code/country_mapping.py`);
-see that script's docstring for exactly which counts were independently
-re-derived from the raw data versus taken from the manuscript's own
-already-verified totals.
-
-### `docs/`
-
-- `data_dictionary.md` — full column-by-column documentation of the curated
-  metadata table, including the country-mapping rules, known limitations,
-  and the type-strain species-identification check.
-- `institution_to_country_mapping.csv` / `Supplementary_File_2_Data_Dictionary.xlsx`
-  — the institution-to-country mapping table and sample-source category
-  rules (also included in the manuscript as Supplementary File 2).
-- `retrieval_flow_diagram.png` — the sequence-retrieval flow diagram
-  (Additional File 2 in the manuscript).
-
-
-## Reproducing the analysis
-
-```bash
-git clone https://github.com/p-dawadi/MetadataCompleteness.git
-cd MetadataCompleteness
-pip install -r requirements.txt
-cd code
-python parsimony_permutation_test.py                       # full dataset
-python parsimony_permutation_test.py --exclude-composition-failing
-python parsimony_permutation_test.py --leave-major-study-out
-python parsimony_permutation_test.py --directly-reported-only
+```
+python code/1_retrieve_sequences.py
 ```
 
-Each run loads `../data/curated_metadata.csv` and
-`../phylogenetics/final_tree/Aligned.Strepto.aln.treefile`, matches tree tips
-to metadata by accession number, computes the observed Fitch parsimony score
-for the "country" character, and compares it to a null distribution built
-from 9,999 label-shuffling permutations (fixed seed 20260827 by default, for
-exact reproducibility — pass `--seed` to change it).
+Requires `biopython`, `pandas`, `requests`. After deduplication and removal of blank
+export artifacts, 350 unique records remained for analysis (lengths 1,207–1,573 bp).
 
-## Requirements
+> **Note on `retrieval.log`:** the original retrieval run's console log was not preserved
+> on disk; only a later, failed re-verification attempt (a missing-dependency error) was
+> found when this repository was assembled, so it has been left out rather than included
+> as evidence of the original run. The retrieval script, query logic, and length filters
+> above are unchanged from what actually produced the 350-record dataset.
 
-Python 3.9+, `pandas`, `dendropy`, `openpyxl` (see `requirements.txt`).
+### 2. Metadata curation
+Host, geographic origin, and sample source were extracted from each GenBank record (and,
+where available, its associated publication) and standardized into `data/curated_metadata.csv`.
+Geographic entries naming an institution rather than a country are mapped to a country by
+`code/country_mapping.py`, which flags such rows via `is_institution_inferred` so they can
+be excluded in the "directly-reported-only" sensitivity analysis (see step 6).
 
-## License
+### 3. Taxonomic/composition screening
+Sequences were screened against the SILVA SSU rRNA reference database (BLAST) to check
+for mislabeled or non-target sequences; results are in `data/silva_screening/`.
+`code/composition_anomaly_check.py` runs additional network-free composition/assembly
+checks (GC content, ambiguous-base content, repeat content) on the four records that
+failed IQ-TREE's composition-homogeneity test:
 
-Code (`code/`) is released under the MIT License (see [`LICENSE`](LICENSE)).
-The manuscript and curated data are not covered by that license — see the
-note at the end of `LICENSE`.
+```
+python code/composition_anomaly_check.py data/sequences/Strepto_350_curated_only.fasta
+```
+
+`code/check_no_reference_sequences.py` confirms every tip label in an alignment/tree
+traces back to a real curated accession, with no external reference sequence left in by
+accident:
+
+```
+python code/check_no_reference_sequences.py data/alignments/Aligned_350_primary.fasta
+```
+
+### 4. Sequence alignment
+The curated sequences were aligned with MAFFT (command-line) to produce
+`data/alignments/Aligned_350_primary.fasta` (350 records) and
+`data/alignments/Aligned_346_sensitivity.fasta` (346 records, excluding the four
+composition-failing whole-genome-shotgun contig-derived records
+NZ_JAQMKN010000038, QSDO01000081, VYVX01000034, PVSY01000043).
+
+### 5. Alignment QC
+`code/4_alignment_stats.py` computes alignment statistics (column count, constant/
+parsimony-informative sites, gap and ambiguous-base content, pairwise identity, unique
+haplotypes) directly from the MAFFT output:
+
+```
+python code/4_alignment_stats.py data/alignments/Aligned_350_primary.fasta
+python code/4_alignment_stats.py data/alignments/Aligned_346_sensitivity.fasta
+```
+
+`code/5_alignment_occupancy_check.py` checks whether the alignment shows evidence of
+end/column trimming beyond MAFFT's own default output:
+
+```
+python code/5_alignment_occupancy_check.py data/alignments/Aligned_350_primary.fasta
+```
+
+### 6. Phylogenetic reconstruction
+Maximum-likelihood trees were built with **IQ-TREE 3.1.3**, one per dataset. The exact
+commands, taken directly from each run's own recorded log, were:
+
+```
+# 350-record primary tree — ModelFinder selects the best-fit model (BIC: K3Pu+F+R3)
+iqtree -s data/alignments/Aligned_350_primary.fasta -st DNA -m MFP -bb 1000 -nt AUTO -seed 20260827 -pre tree_350_primary
+
+# 346-record sensitivity tree — TPM3u+F+R3, with UFBoot trees written out for step 8
+iqtree -s data/alignments/Aligned_346_sensitivity.fasta -st DNA -m TPM3u+F+R3 -bb 1000 -wbt -nt AUTO -seed 20260827 -pre tree_346_sensitivity
+```
+
+Both runs used 1,000 ultrafast bootstrap replicates. Full output (`.iqtree` report,
+`.log`, `.treefile`, `.contree`, `.bionj`, `.mldist`, `.model.gz`, `.splits.nex`,
+`.uniqueseq.phy`) is in `trees/350_primary/` and `trees/346_sensitivity/`;
+`trees/346_sensitivity/` additionally has `tree_346_sensitivity.ufboot` (the 1,000
+bootstrap trees, needed for step 8). IQ-TREE checkpoint files (`.ckp.gz`) are excluded —
+they only support resuming an interrupted run and carry no analytical content.
+
+> **Note on `run_iqtree.pbs`:** an older PBS job script from an earlier iteration of this
+> analysis (different model/settings, different input filename) is not included here, to
+> avoid misrepresenting how the final trees above were actually produced. The commands
+> above are copied verbatim from the "Command:" line each `.log` file itself records.
+
+### 7. Country / topology association (Fitch parsimony + permutation test)
+`code/parsimony_permutation_test.py` tests whether tips sharing a reported country are
+more closely related on the tree than expected by chance: it computes the Fitch
+parsimony score for "country" as a categorical character on the tree, then compares it
+to a null distribution built by permuting country labels across tips (topology fixed).
+
+```
+python code/parsimony_permutation_test.py --treefile trees/350_primary/tree_350_primary.treefile
+python code/parsimony_permutation_test.py --treefile trees/346_sensitivity/tree_346_sensitivity.treefile
+
+# sensitivity variants
+python code/parsimony_permutation_test.py --treefile trees/350_primary/tree_350_primary.treefile --exclude-composition-failing
+python code/parsimony_permutation_test.py --treefile trees/350_primary/tree_350_primary.treefile --leave-major-study-out
+python code/parsimony_permutation_test.py --treefile trees/350_primary/tree_350_primary.treefile --directly-reported-only
+```
+
+Requires `pandas`, `dendropy`. Reads tip-to-country assignments from
+`data/curated_metadata.csv` via `country_mapping.py`.
+
+### 8. Phylogenetic uncertainty across bootstrap trees
+`code/phylo_uncertainty_check.py` repeats the identical Fitch parsimony/permutation test
+across all 1,000 UFBoot trees (not just the single best ML tree), so the
+observed/null-ratio and p-value are reported as a distribution rather than a single-tree
+point estimate — directly addressing how sensitive the topology-association result is to
+the point-estimate tree:
+
+```
+python code/phylo_uncertainty_check.py --ufboot trees/346_sensitivity/tree_346_sensitivity.ufboot
+```
+
+The result of this run is recorded in `trees/346_sensitivity/phylo_uncertainty_346.log`.
+
+### 9. Topology comparison (Robinson-Foulds distance)
+`code/topology_comparison.py` quantifies how much the primary (350-tip) and sensitivity
+(346-tip) trees actually differ in topology, using the Robinson-Foulds distance after
+pruning the primary tree to the 346 shared tips:
+
+```
+python code/topology_comparison.py --primary trees/350_primary/tree_350_primary.treefile --sensitivity trees/346_sensitivity/tree_346_sensitivity.treefile
+python code/topology_comparison.py --primary trees/350_primary/tree_350_primary.treefile --sensitivity trees/346_sensitivity/tree_346_sensitivity.treefile --min-support 70
+```
+
+Requires `dendropy`.
+
+### 10. Bootstrap support distribution
+`code/bootstrap_support_distribution.py` summarizes the UFBoot support values on the
+internal branches of a treefile:
+
+```
+python code/bootstrap_support_distribution.py trees/350_primary/tree_350_primary.treefile
+python code/bootstrap_support_distribution.py trees/346_sensitivity/tree_346_sensitivity.treefile
+```
+
+## What's excluded, and why
+
+- **SILVA reference database** (`SILVA_144_SSURef_NR99_tax_silva_trunc.fasta` and its
+  BLAST index) — a large (~2 GB) public third-party database, not this study's own
+  generated data. Available from the [SILVA project](https://www.arb-silva.de/) directly
+  (release 144).
+- **`retrieval.log`** — see the note under step 1.
+- **`run_iqtree.pbs`** — see the note under step 6; the real commands are documented there
+  instead.
+- **`.ckp.gz` IQ-TREE checkpoint files** — resume-only, no analytical content.
+- Redundant duplicate log files and OS artifacts (`__pycache__`, `.DS_Store`).
+
+## Dependencies
+
+- Python 3 with `biopython`, `pandas`, `requests`, `dendropy`
+- [MAFFT](https://mafft.cbrc.jp/alignment/software/) (command-line)
+- [IQ-TREE](http://www.iqtree.org/) 3.1.3
+- BLAST+ (for the SILVA screening step)
+
+## Citation
+
+If you use this data or code, please cite:
+
+> Pokharel B (1), Nepal S (1), Roy M (2), Regmi S (3), Dawadi P (3,4).
+> **Metadata Completeness and Phylogenetic Structure of Publicly Available *Streptococcus
+> anginosus* 16S rRNA Gene Sequences.**
+> *Short title: Metadata gaps and phylogenetic structure in public S. anginosus 16S archives.*
+> Manuscript under review.
+
+A full citation with journal, volume, and DOI will be added here once the manuscript is
+published.
+
+## Maintainer
+
+Pipeline developed and maintained by Prabin Dawadi (2026).
+
+This repository accompanies a manuscript currently under peer review; a formal open-data
+license (e.g., CC BY 4.0 for data, MIT for code) will be applied here once the journal's
+publication and licensing terms are finalized.
