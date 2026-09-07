@@ -198,7 +198,7 @@ python code/bootstrap_support_distribution.py trees/346_sensitivity/tree_346_sen
 
 If you use this data or code, please cite:
 
-> Pokharel B (1), Nepal S (1), Roy M (2), Regmi S (3), Dawadi P (3,4).
+> Pokharel B, Nepal S, Roy M, Regmi S, Dawadi P. (2026).
 > **Metadata Completeness and Phylogenetic Structure of Publicly Available *Streptococcus
 > anginosus* 16S rRNA Gene Sequences.**
 > *Short title: Metadata gaps and phylogenetic structure in public S. anginosus 16S archives.*
