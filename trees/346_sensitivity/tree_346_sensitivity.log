@@ -1,0 +1,798 @@
+IQ-TREE version 3.1.3 for Linux x86 64-bit built Jul 26 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    maple (AVX512, FMA3, 187 GB RAM)
+Command: iqtree -s Aligned_346_sensitivity.fasta -st DNA -m TPM3u+F+R3 -bb 1000 -wbt -nt AUTO -seed 20260827 -pre tree_346_sensitivity -redo
+Seed:    20260827 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun Sep  6 15:24:40 2026
+Kernel:  AVX+FMA - auto-detect threads (40 CPU cores detected)
+
+Reading alignment file Aligned_346_sensitivity.fasta ... Fasta format detected
+Reading fasta file: done in 0.0226271 secs using 90.78% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.011389 secs using 2372% CPU
+WARNING: 8 sites contain only gaps or ambiguous characters.
+Alignment has 346 sequences with 1715 columns, 853 distinct patterns
+280 parsimony-informative, 368 singleton sites, 1067 constant sites
+             Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000396013 secs
+   1  AF104679.1     8.63%    passed     99.79%
+   2  AF104678.1     8.63%    passed     99.79%
+   3  NR_041722.2    9.62%    passed     99.42%
+   4  OQ216617.1     9.45%    passed     98.64%
+   5  JN713285.1     9.80%    passed     99.67%
+   6  GU470894.1    10.73%    passed     99.72%
+   7  AF145245.1    11.43%    passed     97.44%
+   8  ON077342.1    10.90%    passed     99.96%
+   9  AF145244.1    11.02%    passed     97.13%
+  10  AF145239.1    11.20%    passed     99.95%
+  11  MW595979.1    11.20%    passed     99.85%
+  12  AY986764.1    11.37%    passed     99.16%
+  13  AY691541.1    11.37%    passed     99.90%
+  14  AY986765.1    11.37%    passed     99.90%
+  15  MH628245.1    11.49%    passed     99.43%
+  16  MH628233.1    11.55%    passed     99.25%
+  17  KF933782.1    11.55%    passed     98.89%
+  18  AY986763.1    11.55%    passed     99.98%
+  19  AY691536.1    11.55%    passed     99.96%
+  20  AY986762.1    11.55%    passed     99.96%
+  21  AY986761.1    11.55%    passed     99.71%
+  22  AY691535.1    11.60%    passed     99.80%
+  23  AY691534.1    11.95%    passed     99.57%
+  24  LC144558.1    13.18%    passed     98.81%
+  25  KM225745.1    12.13%    passed     99.43%
+  26  MW595978.1    12.24%    passed     97.84%
+  27  MW543923.1    12.24%    passed     96.92%
+  28  AF145242.1    12.30%    passed     99.01%
+  29  LC545465.1    12.42%    passed     99.95%
+  30  MW543926.1    12.42%    passed     99.67%
+  31  AF145243.1    12.65%    passed     98.67%
+  32  AF145246.1    13.06%    passed     99.02%
+  33  OM265428.1    12.83%    passed     98.84%
+  34  AF145240.1    13.00%    passed     98.58%
+  35  AF145241.1    13.29%    passed     99.31%
+  36  KF733693.1    13.29%    passed     99.92%
+  37  KF733694.1    13.29%    passed     99.88%
+  38  KF733689.1    13.29%    passed     98.83%
+  39  KF733717.1    13.29%    passed     93.43%
+  40  KF733702.1    13.29%    passed     99.82%
+  41  KF733691.1    13.29%    passed     99.41%
+  42  KF733700.1    13.29%    passed     99.83%
+  43  LC140947.1    13.82%    passed     99.24%
+  44  MW555226.1    13.76%    passed     99.84%
+  45  MT242497.1    13.76%    passed     99.70%
+  46  MW555231.1    13.82%    passed     99.97%
+  47  MT459251.1    13.82%    passed     99.97%
+  48  MT261804.1    13.82%    passed     99.95%
+  49  MT242501.1    13.82%    passed     99.73%
+  50  NR_118289.1   13.82%    passed     99.91%
+  51  MT261807.1    13.82%    passed     99.79%
+  52  MT280213.1    13.82%    passed     99.74%
+  53  MT665031.1    13.82%    passed     99.92%
+  54  MT658564.1    13.82%    passed     99.92%
+  55  KJ728813.1    13.82%    passed     97.71%
+  56  MT500684.1    13.82%    passed     99.92%
+  57  MT498552.1    13.82%    passed     99.74%
+  58  MT482705.1    13.82%    passed     99.86%
+  59  MT477776.1    13.82%    passed     99.92%
+  60  MT459269.1    13.82%    passed     99.92%
+  61  MT459252.1    13.82%    passed     99.92%
+  62  JN578465.1    13.82%    passed     99.91%
+  63  MW404518.1    13.82%    passed     99.79%
+  64  MT256261.1    13.82%    passed     99.92%
+  65  MW658778.1    13.82%    passed     99.92%
+  66  MT436816.1    13.88%    passed     99.94%
+  67  MT320108.1    13.82%    passed     99.92%
+  68  MT280310.1    13.82%    passed     99.86%
+  69  MW404394.1    13.82%    passed     99.91%
+  70  MT299717.1    13.82%    passed     99.91%
+  71  MT299682.1    13.82%    passed     99.79%
+  72  MT436826.1    13.82%    passed     99.97%
+  73  MT295467.1    13.82%    passed     99.92%
+  74  MW404519.1    13.82%    passed     99.79%
+  75  MW407045.1    13.82%    passed     99.91%
+  76  MW412584.1    13.82%    passed     99.86%
+  77  MW541857.1    13.82%    passed     99.79%
+  78  MT261781.1    13.88%    passed     98.37%
+  79  MT436823.1    13.88%    passed     99.97%
+  80  MT280220.1    13.88%    passed     99.70%
+  81  NR_117426.1   13.88%    passed     95.86%
+  82  DQ232517.1    13.88%    passed     97.85%
+  83  MW404398.1    13.88%    passed     99.71%
+  84  MW404400.1    13.94%    passed     99.95%
+  85  GU045404.1    13.88%    passed     95.86%
+  86  DQ232519.1    13.88%    passed     99.67%
+  87  DQ232518.1    13.88%    passed     95.86%
+  88  AY309096.1    14.29%    passed     99.93%
+  89  MT597726.1    14.40%    passed     98.25%
+  90  MT597725.1    14.40%    passed     98.25%
+  91  MT597583.1    14.58%    passed     99.90%
+  92  MT459365.1    14.64%    passed     98.16%
+  93  MT545124.1    14.64%    passed     96.89%
+  94  MT597584.1    14.69%    passed     98.90%
+  95  MT597634.1    14.69%    passed     98.53%
+  96  MT573751.1    14.75%    passed     97.96%
+  97  MT512079.1    14.87%    passed     99.37%
+  98  MT512098.1    14.87%    passed     99.13%
+  99  MT573862.1    14.87%    passed     98.77%
+ 100  MT459364.1    14.93%    passed     99.47%
+ 101  MT597616.1    14.99%    passed     98.75%
+ 102  KM052286.1    15.22%    passed     97.27%
+ 103  MT597613.1    15.51%    passed     99.53%
+ 104  LC258132.1    15.51%    passed     99.88%
+ 105  MT573752.1    15.80%    passed     98.74%
+ 106  MT597617.1    15.80%    passed     99.63%
+ 107  MT597524.1    15.92%    passed     99.55%
+ 108  KJ803946.1    15.92%    passed     99.48%
+ 109  GU561378.1    15.98%    passed     99.95%
+ 110  GU561377.1    16.15%    passed     99.92%
+ 111  AY691537.1    16.21%    passed     97.45%
+ 112  GU907516.1    16.15%    passed     98.52%
+ 113  PQ222928.1    16.56%    passed     92.59%
+ 114  MT807632.1    16.56%    passed     97.96%
+ 115  JX678670.1    16.56%    passed     98.13%
+ 116  MH127521.1    16.56%    passed     99.58%
+ 117  OR501223.1    16.62%    passed     99.43%
+ 118  MH127522.1    16.62%    passed     99.86%
+ 119  PQ222916.1    16.68%    passed     99.87%
+ 120  PQ222941.1    16.68%    passed     99.87%
+ 121  PQ222932.1    16.73%    passed     99.77%
+ 122  PQ222938.1    16.85%    passed     99.63%
+ 123  KC569574.1    17.14%    passed     97.15%
+ 124  KC569575.1    16.85%    passed     99.28%
+ 125  KC569586.1    16.85%    passed     99.52%
+ 126  KC569576.1    16.85%    passed     96.43%
+ 127  KC569577.1    16.85%    passed     99.57%
+ 128  KC569591.1    16.85%    passed     90.54%
+ 129  KC569592.1    16.85%    passed     98.96%
+ 130  KC569593.1    16.85%    passed     98.79%
+ 131  KC569594.1    16.85%    passed     91.17%
+ 132  KC569589.1    16.85%    passed     98.81%
+ 133  KC569588.1    16.85%    passed     99.19%
+ 134  KC569587.1    16.85%    passed     94.65%
+ 135  KC569585.1    16.85%    passed     99.31%
+ 136  KC569584.1    16.85%    passed     92.10%
+ 137  KC569583.1    16.85%    passed     99.35%
+ 138  KC569582.1    16.85%    passed     96.43%
+ 139  KC569581.1    16.85%    passed     96.14%
+ 140  KC569580.1    16.85%    passed     99.35%
+ 141  KC569579.1    16.85%    passed     96.36%
+ 142  KC569578.1    16.85%    passed     99.35%
+ 143  MH817386.1    16.91%    passed     97.71%
+ 144  PQ222501.1    16.91%    passed     99.69%
+ 145  MW090399.1    17.03%    passed     99.81%
+ 146  JX678675.1    17.08%    passed     99.86%
+ 147  MT903068.1    17.08%    passed     99.94%
+ 148  OQ947771.1    17.14%    passed     98.90%
+ 149  MT807855.1    17.14%    passed     95.32%
+ 150  MT585451.1    17.20%    passed     96.19%
+ 151  MT807631.1    17.20%    passed     98.86%
+ 152  MT807630.1    17.26%    passed     89.93%
+ 153  KC569590.1    17.26%    passed     99.03%
+ 154  MH817392.1    17.32%    passed     94.31%
+ 155  MF578814.1    17.43%    passed     99.70%
+ 156  JX678671.1    17.38%    passed     99.95%
+ 157  OR501332.1    17.61%    passed     99.87%
+ 158  MK270132.2    17.67%    passed     99.30%
+ 159  MT807742.1    17.67%    passed     99.76%
+ 160  MF578782.1    17.67%    passed     99.30%
+ 161  OR501306.1    17.73%    passed     98.54%
+ 162  OR501317.1    17.73%    passed     98.45%
+ 163  OR501304.1    17.73%    passed     99.37%
+ 164  OR501281.1    17.73%    passed     99.82%
+ 165  OR501251.1    17.73%    passed     99.72%
+ 166  OR501282.1    17.73%    passed     99.43%
+ 167  OR501239.1    17.73%    passed     99.22%
+ 168  OR501238.1    17.73%    passed     99.75%
+ 169  OR501229.1    17.73%    passed     99.72%
+ 170  OR501225.1    17.73%    passed     99.19%
+ 171  OR501259.1    17.73%    passed     99.75%
+ 172  MT807854.1    17.73%    passed     94.10%
+ 173  OR501283.1    17.73%    passed     99.75%
+ 174  OR501255.1    17.73%    passed     99.37%
+ 175  OR501249.1    17.73%    passed     99.00%
+ 176  OR501257.1    17.73%    passed     99.75%
+ 177  MF578815.1    17.84%    passed     99.77%
+ 178  MT807694.1    17.78%    passed     99.70%
+ 179  MH930443.1    17.78%    passed     99.82%
+ 180  MF538609.1    18.02%    passed     99.33%
+ 181  MT807874.1    17.90%    passed     99.73%
+ 182  MT807695.1    17.96%    passed     99.67%
+ 183  MF538610.1    18.08%    passed     99.25%
+ 184  MT807875.1    18.02%    passed     99.97%
+ 185  PV270569.1    18.08%    passed     99.59%
+ 186  JN787196.1    18.13%    passed     99.69%
+ 187  JN787200.1    18.13%    passed     99.58%
+ 188  JN787199.1    18.13%    passed     99.82%
+ 189  JN787198.1    18.13%    passed     99.82%
+ 190  JN787197.1    18.13%    passed     99.82%
+ 191  JN787194.1    18.13%    passed     99.82%
+ 192  JN787195.1    18.13%    passed     99.58%
+ 193  JN787188.1    18.13%    passed     99.82%
+ 194  JN787193.1    18.13%    passed     99.82%
+ 195  JN787192.1    18.13%    passed     99.82%
+ 196  JN787191.1    18.13%    passed     99.82%
+ 197  JN787190.1    18.13%    passed     99.82%
+ 198  JN787189.1    18.13%    passed     99.82%
+ 199  JN787184.1    18.13%    passed     99.52%
+ 200  NR_118320.1   18.13%    passed     99.82%
+ 201  JN787186.1    18.13%    passed     99.58%
+ 202  JN787187.1    18.13%    passed     99.58%
+ 203  JN787185.1    18.13%    passed     99.52%
+ 204  JN787183.1    18.13%    passed     99.77%
+ 205  JN787202.1    18.13%    passed     99.82%
+ 206  JN787182.1    18.13%    passed     99.12%
+ 207  JX993433.1    18.13%    passed     99.57%
+ 208  JX993434.1    18.13%    passed     99.57%
+ 209  JX993435.1    18.13%    passed     99.82%
+ 210  JX993436.1    18.13%    passed     99.58%
+ 211  JX993438.1    18.13%    passed     99.52%
+ 212  JX993448.1    18.19%    passed     99.86%
+ 213  KC628749.1    18.13%    passed     98.92%
+ 214  JN787164.1    18.13%    passed     99.77%
+ 215  JN787165.1    18.13%    passed     99.93%
+ 216  JN787166.1    18.13%    passed     99.93%
+ 217  JN787167.1    18.13%    passed     99.93%
+ 218  JN787168.1    18.13%    passed     99.28%
+ 219  JN787169.1    18.19%    passed     99.72%
+ 220  JN787170.1    18.13%    passed     99.85%
+ 221  JN787171.1    18.13%    passed     99.77%
+ 222  JN787172.1    18.13%    passed     99.77%
+ 223  JN787173.1    18.13%    passed     99.77%
+ 224  JN787174.1    18.13%    passed     99.77%
+ 225  JN787175.1    18.13%    passed     99.77%
+ 226  JN787176.1    18.13%    passed     99.77%
+ 227  JN787177.1    18.13%    passed     99.77%
+ 228  JN787178.1    18.13%    passed     99.77%
+ 229  JN787179.1    18.13%    passed     99.77%
+ 230  JN787180.1    18.13%    passed     99.52%
+ 231  JN787181.1    18.13%    passed     99.55%
+ 232  JN787201.1    18.13%    passed     99.82%
+ 233  JN787210.1    18.13%    passed     99.58%
+ 234  JN787203.1    18.13%    passed     99.82%
+ 235  JN787204.1    18.13%    passed     99.82%
+ 236  JN787220.1    18.13%    passed     99.82%
+ 237  JN787219.1    18.13%    passed     99.58%
+ 238  JN787218.1    18.13%    passed     99.58%
+ 239  JN787217.1    18.13%    passed     99.58%
+ 240  JN787216.1    18.13%    passed     99.58%
+ 241  JN787215.1    18.13%    passed     99.58%
+ 242  JN787214.1    18.13%    passed     99.82%
+ 243  JN787213.1    18.13%    passed     99.82%
+ 244  JN787212.1    18.13%    passed     99.58%
+ 245  JN787211.1    18.13%    passed     99.58%
+ 246  JN787209.1    18.13%    passed     99.82%
+ 247  JN787208.1    18.13%    passed     99.82%
+ 248  JN787207.1    18.13%    passed     99.58%
+ 249  JN787206.1    18.13%    passed     99.58%
+ 250  JN787205.1    18.13%    passed     99.41%
+ 251  MT585448.1    18.19%    passed     99.21%
+ 252  MT807654.1    18.37%    passed     99.57%
+ 253  MF578816.1    18.19%    passed     99.90%
+ 254  KC628758.1    18.25%    passed     99.41%
+ 255  AB355613.1    18.43%    passed     99.45%
+ 256  AB355610.1    18.43%    passed     99.38%
+ 257  MT807741.1    18.43%    passed     99.97%
+ 258  AB355609.1    18.43%    passed     99.38%
+ 259  NR_112705.1   18.43%    passed     99.38%
+ 260  AB355614.1    18.43%    passed     99.22%
+ 261  AB355615.1    18.43%    passed     99.53%
+ 262  AB355612.1    18.43%    passed     99.19%
+ 263  MT807726.1    18.48%    passed     99.84%
+ 264  AB355611.1    18.54%    passed     97.41%
+ 265  MT585452.1    18.60%    passed     99.75%
+ 266  MT807472.1    18.83%    passed     99.84%
+ 267  MT807725.1    18.95%    passed     99.75%
+ 268  MT807646.1    19.01%    passed     96.53%
+ 269  MT807578.1    19.07%    passed     99.74%
+ 270  MH817660.1    19.07%    passed     88.96%
+ 271  MH817391.1    19.07%    passed     86.71%
+ 272  MT807287.1    19.18%    passed     92.13%
+ 273  MT807824.1    19.42%    passed     98.33%
+ 274  MT807830.1    19.42%    passed     99.99%
+ 275  MT807409.1    19.48%    passed     93.48%
+ 276  MT807562.1    19.53%    passed     94.37%
+ 277  MT807823.1    19.53%    passed     98.16%
+ 278  MH817390.1    19.53%    passed     94.92%
+ 279  MT807829.1    19.59%    passed     99.96%
+ 280  MT807825.1    19.65%    passed     97.02%
+ 281  MT807380.1    19.83%    passed     99.95%
+ 282  MH997762.1    19.94%    passed     87.62%
+ 283  MT807442.1    20.00%    passed     99.88%
+ 284  MT807410.1    20.06%    passed     95.52%
+ 285  MT807827.1    20.12%    passed     99.80%
+ 286  MT807495.1    20.12%    passed     99.48%
+ 287  MT807563.1    20.41%    passed     98.33%
+ 288  MT807381.1    20.47%    passed     99.90%
+ 289  MH817378.1    20.47%    passed     93.24%
+ 290  AB006119.1    20.52%    passed     98.52%
+ 291  MT807467.1    20.58%    passed     99.15%
+ 292  MT807231.1    20.76%    passed     99.15%
+ 293  MT807232.1    20.76%    passed     99.44%
+ 294  MH997758.1    20.87%    passed     80.52%
+ 295  AB006120.1    20.99%    passed     88.96%
+ 296  MT807213.1    21.34%    passed     99.89%
+ 297  MH817662.1    21.92%    passed     74.05%
+ 298  MK131295.1    21.92%    passed     81.99%
+ 299  X58309.1      23.56%    passed     99.47%
+ 300  NR_118937.1   23.56%    passed     99.47%
+ 301  ON055608.1    22.27%    passed     99.92%
+ 302  MT807441.1    23.21%    passed     99.96%
+ 303  MH813973.1    23.38%    passed     94.23%
+ 304  MG675045.1    24.43%    passed     98.42%
+ 305  PP825757.1    24.66%    passed     95.33%
+ 306  MT535860.1    24.90%    passed     93.73%
+ 307  MT535861.1    24.90%    passed     98.19%
+ 308  MK330515.1    24.90%    passed     93.97%
+ 309  PP825763.1    24.90%    passed     97.88%
+ 310  OR976019.1    25.83%    passed     95.50%
+ 311  OR976018.1    25.95%    passed     97.04%
+ 312  OR976017.1    26.53%    passed     91.16%
+ 313  KX661058.1    26.88%    passed     89.74%
+ 314  ON810613.1    26.88%    passed     83.35%
+ 315  KX661046.1    27.06%    passed     95.41%
+ 316  KX661070.1    27.06%    passed     88.71%
+ 317  KX661074.1    27.06%    passed     88.77%
+ 318  KX661071.1    27.06%    passed     88.77%
+ 319  KX661072.1    27.06%    passed     91.15%
+ 320  KX661073.1    27.06%    passed     95.41%
+ 321  KX661067.1    27.06%    passed     96.52%
+ 322  KX661075.1    27.06%    passed     95.41%
+ 323  KX661089.1    27.06%    passed     91.15%
+ 324  KX661113.1    27.06%    passed     96.53%
+ 325  KX661068.1    27.06%    passed     95.41%
+ 326  KX661065.1    27.06%    passed     91.29%
+ 327  KX661047.1    27.06%    passed     96.53%
+ 328  KX661054.1    27.06%    passed     95.41%
+ 329  KX661048.1    27.06%    passed     95.41%
+ 330  KX661044.1    27.06%    passed     95.85%
+ 331  KX661049.1    27.06%    passed     97.08%
+ 332  KX661050.1    27.06%    passed     94.22%
+ 333  KX661051.1    27.06%    passed     91.24%
+ 334  KX661043.1    27.06%    passed     88.71%
+ 335  KX661052.1    27.06%    passed     99.34%
+ 336  KX661055.1    27.06%    passed     95.41%
+ 337  KX661056.1    27.06%    passed     88.77%
+ 338  KX661057.1    27.06%    passed     88.77%
+ 339  KX661059.1    27.06%    passed     97.40%
+ 340  KX661061.1    27.06%    passed     95.41%
+ 341  KX661062.1    27.06%    passed     95.41%
+ 342  KX661063.1    27.06%    passed     88.77%
+ 343  MF538608.1    27.81%    passed     95.53%
+ 344  ON796814.1    30.50%    passed     35.44%
+ 345  ON810614.1    29.39%    passed     87.69%
+ 346  OQ383429.1    29.45%    passed     86.14%
+****  TOTAL         17.76%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: AF104678.1 is identical to AF104679.1 but kept for subsequent analysis
+NOTE: AY986762.1 is identical to AY691536.1 but kept for subsequent analysis
+NOTE: JN578465.1 is identical to NR_118289.1 but kept for subsequent analysis
+NOTE: MT500684.1 is identical to MT665031.1 but kept for subsequent analysis
+NOTE: GU045404.1 is identical to NR_117426.1 but kept for subsequent analysis
+NOTE: MT597725.1 is identical to MT597726.1 but kept for subsequent analysis
+NOTE: KC569582.1 is identical to KC569576.1 but kept for subsequent analysis
+NOTE: MF578782.1 is identical to MK270132.2 but kept for subsequent analysis
+NOTE: OR501229.1 is identical to OR501251.1 but kept for subsequent analysis
+NOTE: OR501259.1 is identical to OR501238.1 but kept for subsequent analysis
+NOTE: JN787195.1 is identical to JN787200.1 but kept for subsequent analysis
+NOTE: JN787198.1 is identical to JN787199.1 but kept for subsequent analysis
+NOTE: JN787185.1 is identical to JN787184.1 but kept for subsequent analysis
+NOTE: JN787164.1 is identical to JN787183.1 but kept for subsequent analysis
+NOTE: JX993434.1 is identical to JX993433.1 but kept for subsequent analysis
+NOTE: JN787167.1 is identical to JN787166.1 but kept for subsequent analysis
+NOTE: NR_112705.1 is identical to AB355609.1 but kept for subsequent analysis
+NOTE: NR_118937.1 is identical to X58309.1 but kept for subsequent analysis
+NOTE: KX661073.1 is identical to KX661046.1 but kept for subsequent analysis
+NOTE: KX661043.1 is identical to KX661070.1 but kept for subsequent analysis
+NOTE: KX661071.1 is identical to KX661074.1 but kept for subsequent analysis
+NOTE: KX661089.1 is identical to KX661072.1 but kept for subsequent analysis
+NOTE: KX661047.1 is identical to KX661113.1 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.00179696 secs using 2216% CPU
+Identifying sites to remove: done in 0.00500202 secs using 2290% CPU
+NOTE: 60 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: MW407045.1 (identical to NR_118289.1) is ignored but added at the end
+NOTE: MT256261.1 (identical to MT665031.1) is ignored but added at the end
+NOTE: MT320108.1 (identical to MT665031.1) is ignored but added at the end
+NOTE: MT295467.1 (identical to MT665031.1) is ignored but added at the end
+NOTE: DQ232518.1 (identical to NR_117426.1) is ignored but added at the end
+NOTE: OR501283.1 (identical to OR501238.1) is ignored but added at the end
+NOTE: OR501257.1 (identical to OR501238.1) is ignored but added at the end
+NOTE: JN787186.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787187.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JX993436.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787210.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787219.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787218.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787217.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787216.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787215.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787212.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787211.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787207.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787206.1 (identical to JN787200.1) is ignored but added at the end
+NOTE: JN787197.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787194.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787188.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787193.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787192.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787191.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787190.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787189.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: NR_118320.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787202.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JX993435.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787201.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787203.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787204.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787220.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787214.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787213.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787209.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JN787208.1 (identical to JN787199.1) is ignored but added at the end
+NOTE: JX993438.1 (identical to JN787184.1) is ignored but added at the end
+NOTE: JN787180.1 (identical to JN787184.1) is ignored but added at the end
+NOTE: JN787171.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787172.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787173.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787174.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787175.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787176.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787177.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787178.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: JN787179.1 (identical to JN787183.1) is ignored but added at the end
+NOTE: KX661075.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661068.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661054.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661048.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661055.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661061.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661062.1 (identical to KX661046.1) is ignored but added at the end
+NOTE: KX661056.1 (identical to KX661074.1) is ignored but added at the end
+NOTE: KX661057.1 (identical to KX661074.1) is ignored but added at the end
+NOTE: KX661063.1 (identical to KX661074.1) is ignored but added at the end
+Alignment was printed to tree_346_sensitivity.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to tree_346_sensitivity.uniqueseq.phy
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.042 seconds
+Generating 1000 samples for ultrafast bootstrap (seed: 20260827)...
+
+NOTE: 27 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 40 CPU cores
+Increase to 10 rounds for branch lengths
+118 trees examined
+Threads: 1 / Time: 40.057 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -20350
+Threads: 2 / Time: 37.583 sec / Speedup: 1.066 / Efficiency: 53% / LogL: -20350
+Threads: 3 / Time: 36.806 sec / Speedup: 1.088 / Efficiency: 36% / LogL: -20350
+Determining AUTO threadcount: done in 114.449 secs using 201.4% CPU
+BEST NUMBER OF THREADS: 2
+
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -10276.466
+2. Current log-likelihood: -9930.474
+3. Current log-likelihood: -9869.352
+4. Current log-likelihood: -9845.168
+5. Current log-likelihood: -9841.186
+6. Current log-likelihood: -9839.357
+7. Current log-likelihood: -9837.201
+8. Current log-likelihood: -9834.784
+9. Current log-likelihood: -9832.142
+10. Current log-likelihood: -9829.304
+11. Current log-likelihood: -9826.307
+12. Current log-likelihood: -9823.192
+13. Current log-likelihood: -9820.061
+14. Current log-likelihood: -9817.045
+15. Current log-likelihood: -9814.435
+16. Current log-likelihood: -9812.477
+17. Current log-likelihood: -9811.179
+18. Current log-likelihood: -9810.390
+19. Current log-likelihood: -9809.925
+20. Current log-likelihood: -9809.647
+21. Current log-likelihood: -9809.456
+22. Current log-likelihood: -9809.299
+23. Current log-likelihood: -9809.163
+24. Current log-likelihood: -9809.047
+Optimal log-likelihood: -9808.938
+Rate parameters:  A-C: 0.74591  A-G: 1.86275  A-T: 1.00000  C-G: 0.74591  C-T: 1.86275  G-T: 1.00000
+Base frequencies:  A: 0.261  C: 0.219  G: 0.304  T: 0.216
+Site proportion and rates:  (0.766,0.213) (0.188,1.613) (0.046,11.521)
+Parameters optimization took 24 rounds (6.453 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.194839 secs using 200.3% CPU
+Computing ML distances took 0.195742 sec (of wall-clock time) 0.391400 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.0020411 secs using 287.1% CPU
+Constructing RapidNJ tree: done in 0.0190101 secs using 264.9% CPU
+Computing RapidNJ tree took 0.021108 sec (of wall-clock time) 0.056269 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -10001.611
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 3.655 second
+Computing log-likelihood of 98 initial trees ... 4.108 seconds
+Current best score: -9756.847
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -9708.920
+Iteration 10 / LogL: -9735.129 / Time: 0h:2m:59s
+Iteration 20 / LogL: -9751.179 / Time: 0h:3m:45s
+Finish initializing candidate tree set (20)
+Current best tree score: -9708.920 / CPU time: 102.840
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 25: -9708.814
+Iteration 30 / LogL: -9804.190 / Time: 0h:4m:13s (0h:13m:48s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 36: -9703.980
+Iteration 40 / LogL: -9725.860 / Time: 0h:4m:34s (0h:11m:14s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 50: -9701.575
+Iteration 50 / LogL: -9701.575 / Time: 0h:4m:58s (0h:10m:8s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 51: -9698.232
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 52: -9695.398
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 57: -9694.282
+Iteration 60 / LogL: -9705.172 / Time: 0h:5m:25s (0h:8m:55s left)
+Iteration 70 / LogL: -9727.285 / Time: 0h:5m:48s (0h:7m:19s left)
+Iteration 80 / LogL: -9698.098 / Time: 0h:6m:17s (0h:6m:7s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 86: -9694.182
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 90: -9693.766
+Iteration 90 / LogL: -9693.766 / Time: 0h:6m:47s (0h:7m:37s left)
+Iteration 100 / LogL: -9707.427 / Time: 0h:7m:12s (0h:6m:33s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.870
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 103: -9692.896
+Iteration 110 / LogL: -9695.964 / Time: 0h:7m:38s (0h:6m:30s left)
+Iteration 120 / LogL: -9715.737 / Time: 0h:8m:2s (0h:5m:36s left)
+Iteration 130 / LogL: -9804.587 / Time: 0h:8m:29s (0h:4m:48s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 136: -9692.851
+Iteration 140 / LogL: -9692.906 / Time: 0h:8m:58s (0h:6m:11s left)
+Iteration 150 / LogL: -9693.244 / Time: 0h:9m:23s (0h:5m:25s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 155: -9692.700
+Iteration 160 / LogL: -9697.107 / Time: 0h:9m:54s (0h:5m:55s left)
+Iteration 170 / LogL: -9711.456 / Time: 0h:10m:26s (0h:5m:15s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 172: -9692.626
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 178: -9692.527
+Iteration 180 / LogL: -9692.694 / Time: 0h:10m:52s (0h:5m:57s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 181: -9692.445
+Iteration 190 / LogL: -9706.249 / Time: 0h:11m:27s (0h:5m:30s left)
+BETTER TREE FOUND at iteration 196: -9692.440
+Iteration 200 / LogL: -9702.158 / Time: 0h:11m:54s (0h:5m:44s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.952
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 207: -9692.408
+Iteration 210 / LogL: -9697.236 / Time: 0h:12m:26s (0h:5m:46s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 214: -9691.154
+Iteration 220 / LogL: -9701.860 / Time: 0h:12m:54s (0h:5m:32s left)
+Iteration 230 / LogL: -9694.074 / Time: 0h:13m:17s (0h:4m:52s left)
+Iteration 240 / LogL: -9725.904 / Time: 0h:13m:39s (0h:4m:13s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 250: -9691.141
+Iteration 250 / LogL: -9691.141 / Time: 0h:14m:4s (0h:5m:38s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 260 / LogL: -9722.359 / Time: 0h:14m:31s (0h:5m:2s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 269: -9690.971
+Iteration 270 / LogL: -9702.380 / Time: 0h:14m:57s (0h:5m:30s left)
+Iteration 280 / LogL: -9691.160 / Time: 0h:15m:27s (0h:4m:55s left)
+Iteration 290 / LogL: -9691.183 / Time: 0h:15m:50s (0h:4m:19s left)
+Iteration 300 / LogL: -9767.103 / Time: 0h:16m:13s (0h:3m:44s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.960
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 310 / LogL: -9701.178 / Time: 0h:16m:40s (0h:4m:51s left)
+Iteration 320 / LogL: -9694.151 / Time: 0h:17m:4s (0h:4m:16s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 330: -9688.778
+Iteration 330 / LogL: -9688.778 / Time: 0h:17m:29s (0h:5m:18s left)
+BETTER TREE FOUND at iteration 336: -9688.773
+Iteration 340 / LogL: -9700.671 / Time: 0h:17m:51s (0h:5m:3s left)
+Iteration 350 / LogL: -9715.251 / Time: 0h:18m:19s (0h:4m:30s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+BETTER TREE FOUND at iteration 355: -9688.770
+Iteration 360 / LogL: -9699.480 / Time: 0h:18m:47s (0h:4m:58s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 361: -9686.388
+BETTER TREE FOUND at iteration 370: -9686.378
+Iteration 370 / LogL: -9686.378 / Time: 0h:19m:16s (0h:5m:13s left)
+BETTER TREE FOUND at iteration 375: -9686.372
+Iteration 380 / LogL: -9698.303 / Time: 0h:19m:46s (0h:4m:57s left)
+Iteration 390 / LogL: -9708.485 / Time: 0h:20m:14s (0h:4m:25s left)
+Iteration 400 / LogL: -9701.818 / Time: 0h:20m:41s (0h:3m:53s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.930
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 410 / LogL: -9704.014 / Time: 0h:21m:13s (0h:4m:40s left)
+Iteration 420 / LogL: -9687.242 / Time: 0h:21m:42s (0h:4m:8s left)
+Iteration 430 / LogL: -9686.379 / Time: 0h:22m:15s (0h:3m:37s left)
+Iteration 440 / LogL: -9694.662 / Time: 0h:22m:45s (0h:3m:6s left)
+Iteration 450 / LogL: -9702.073 / Time: 0h:23m:10s (0h:2m:34s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 460 / LogL: -9691.834 / Time: 0h:23m:43s (0h:2m:4s left)
+Iteration 470 / LogL: -9695.121 / Time: 0h:24m:11s (0h:1m:32s left)
+Iteration 480 / LogL: -9706.112 / Time: 0h:24m:38s (0h:1m:1s left)
+Iteration 490 / LogL: -9690.740 / Time: 0h:25m:7s (0h:0m:30s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 496: -9686.250
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 499: -9684.666
+Iteration 500 / LogL: -9689.800 / Time: 0h:25m:42s (0h:5m:5s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.921
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 510 / LogL: -9696.425 / Time: 0h:26m:12s (0h:4m:38s left)
+Iteration 520 / LogL: -9686.249 / Time: 0h:26m:41s (0h:4m:6s left)
+Iteration 530 / LogL: -9686.257 / Time: 0h:27m:9s (0h:3m:35s left)
+Iteration 540 / LogL: -9688.376 / Time: 0h:27m:37s (0h:3m:4s left)
+Iteration 550 / LogL: -9692.004 / Time: 0h:28m:9s (0h:2m:33s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 552: -9684.605
+Iteration 560 / LogL: -9752.123 / Time: 0h:28m:42s (0h:4m:43s left)
+Iteration 570 / LogL: -9697.211 / Time: 0h:29m:13s (0h:4m:12s left)
+Iteration 580 / LogL: -9684.987 / Time: 0h:29m:47s (0h:3m:42s left)
+BETTER TREE FOUND at iteration 588: -9684.596
+Iteration 590 / LogL: -9685.829 / Time: 0h:30m:23s (0h:5m:3s left)
+Iteration 600 / LogL: -9701.499 / Time: 0h:30m:57s (0h:4m:32s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.907
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 610 / LogL: -9692.457 / Time: 0h:31m:26s (0h:4m:38s left)
+Iteration 620 / LogL: -9755.959 / Time: 0h:31m:58s (0h:4m:7s left)
+Iteration 630 / LogL: -9702.574 / Time: 0h:32m:31s (0h:3m:37s left)
+Iteration 640 / LogL: -9693.001 / Time: 0h:33m:2s (0h:3m:6s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 650: -9684.578
+Iteration 650 / LogL: -9684.578 / Time: 0h:33m:39s (0h:5m:11s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 652: -9684.069
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 655: -9684.052
+Iteration 660 / LogL: -9684.588 / Time: 0h:34m:13s (0h:4m:56s left)
+Iteration 670 / LogL: -9694.141 / Time: 0h:34m:44s (0h:4m:24s left)
+Iteration 680 / LogL: -9703.808 / Time: 0h:35m:14s (0h:3m:53s left)
+Iteration 690 / LogL: -9797.611 / Time: 0h:35m:42s (0h:3m:22s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 691: -9684.031
+Iteration 700 / LogL: -9685.314 / Time: 0h:36m:16s (0h:4m:43s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.932
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 710 / LogL: -9687.133 / Time: 0h:36m:47s (0h:4m:40s left)
+Iteration 720 / LogL: -9691.813 / Time: 0h:37m:17s (0h:4m:8s left)
+Iteration 730 / LogL: -9700.256 / Time: 0h:37m:50s (0h:3m:38s left)
+Iteration 740 / LogL: -9788.234 / Time: 0h:38m:16s (0h:3m:6s left)
+Iteration 750 / LogL: -9711.502 / Time: 0h:38m:49s (0h:2m:35s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 760 / LogL: -9712.638 / Time: 0h:39m:17s (0h:2m:4s left)
+Iteration 770 / LogL: -9686.813 / Time: 0h:39m:53s (0h:1m:33s left)
+Iteration 780 / LogL: -9691.449 / Time: 0h:40m:23s (0h:1m:2s left)
+Iteration 790 / LogL: -9806.597 / Time: 0h:40m:52s (0h:0m:31s left)
+Iteration 800 / LogL: -9693.834 / Time: 0h:41m:21s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.949
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 801: -9683.521
+Iteration 810 / LogL: -9703.691 / Time: 0h:42m:0s (0h:4m:43s left)
+Iteration 820 / LogL: -9700.709 / Time: 0h:42m:32s (0h:4m:12s left)
+Iteration 830 / LogL: -9787.221 / Time: 0h:43m:3s (0h:3m:41s left)
+Iteration 840 / LogL: -9709.207 / Time: 0h:43m:34s (0h:3m:10s left)
+Iteration 850 / LogL: -9701.119 / Time: 0h:44m:9s (0h:2m:39s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 860 / LogL: -9687.298 / Time: 0h:44m:45s (0h:2m:8s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 870: -9683.505
+Iteration 870 / LogL: -9683.505 / Time: 0h:45m:14s (0h:5m:12s left)
+Iteration 880 / LogL: -9683.512 / Time: 0h:45m:50s (0h:4m:41s left)
+Iteration 890 / LogL: -9690.129 / Time: 0h:46m:23s (0h:4m:10s left)
+Iteration 900 / LogL: -9702.646 / Time: 0h:46m:51s (0h:3m:38s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.958
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 904: -9683.492
+Iteration 910 / LogL: -9698.031 / Time: 0h:47m:27s (0h:4m:54s left)
+Iteration 920 / LogL: -9690.894 / Time: 0h:47m:59s (0h:4m:23s left)
+Iteration 930 / LogL: -9693.071 / Time: 0h:48m:30s (0h:3m:51s left)
+Iteration 940 / LogL: -9706.496 / Time: 0h:49m:2s (0h:3m:20s left)
+BETTER TREE FOUND at iteration 942: -9683.488
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 946: -9683.463
+Iteration 950 / LogL: -9699.462 / Time: 0h:49m:37s (0h:5m:1s left)
+Log-likelihood cutoff on original alignment: -9787.044
+UFBoot trees printed to tree_346_sensitivity.ufboot
+Iteration 960 / LogL: -9683.498 / Time: 0h:50m:15s (0h:4m:30s left)
+Iteration 970 / LogL: -9684.149 / Time: 0h:50m:46s (0h:3m:58s left)
+Iteration 980 / LogL: -9683.486 / Time: 0h:51m:17s (0h:3m:27s left)
+Iteration 990 / LogL: -9787.128 / Time: 0h:51m:47s (0h:2m:55s left)
+Iteration 1000 / LogL: -9692.012 / Time: 0h:52m:20s (0h:2m:24s left)
+Log-likelihood cutoff on original alignment: -9787.044
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.965
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+UFBoot trees printed to tree_346_sensitivity.ufboot
+WARNING: bootstrap analysis did not converge. You should rerun with higher number of iterations (-nm option)
+TREE SEARCH COMPLETED AFTER 1001 ITERATIONS / Time: 0h:52m:25s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -9683.463
+Optimal log-likelihood: -9683.463
+Rate parameters:  A-C: 0.76799  A-G: 1.84864  A-T: 1.00000  C-G: 0.76799  C-T: 1.84864  G-T: 1.00000
+Base frequencies:  A: 0.261  C: 0.219  G: 0.304  T: 0.216
+Site proportion and rates:  (0.825,0.252) (0.132,2.078) (0.043,12.118)
+Parameters optimization took 1 rounds (0.163 sec)
+BEST SCORE FOUND : -9683.463
+Creating bootstrap support values...
+Split supports printed to NEXUS file tree_346_sensitivity.splits.nex
+Total tree length: 1.481
+
+Total number of iterations: 1001
+CPU time used for tree search: 5713.396 sec (1h:35m:13s)
+Wall-clock time used for tree search: 3022.962 sec (0h:50m:22s)
+Total CPU time used: 5965.417 sec (1h:39m:25s)
+Total wall-clock time used: 3147.458 sec (0h:52m:27s)
+UFBoot trees printed to tree_346_sensitivity.ufboot
+
+Computing bootstrap consensus tree...
+Reading input file tree_346_sensitivity.splits.nex...
+286 taxa and 13749 splits.
+Consensus tree written to tree_346_sensitivity.contree
+Reading input trees file tree_346_sensitivity.contree
+Log-likelihood of consensus tree: -9684.183
+
+Analysis results written to: 
+  IQ-TREE report:                tree_346_sensitivity.iqtree
+  Maximum-likelihood tree:       tree_346_sensitivity.treefile
+  Likelihood distances:          tree_346_sensitivity.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          tree_346_sensitivity.splits.nex
+  Consensus tree:                tree_346_sensitivity.contree
+  UFBoot trees:                  tree_346_sensitivity.ufboot
+  Screen log file:               tree_346_sensitivity.log
+
+Date and Time: Sun Sep  6 16:17:12 2026

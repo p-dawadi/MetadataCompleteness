@@ -1,0 +1,20 @@
+  ...100/1000 trees done
+  ...200/1000 trees done
+  ...300/1000 trees done
+  ...400/1000 trees done
+  ...500/1000 trees done
+  ...600/1000 trees done
+  ...700/1000 trees done
+  ...800/1000 trees done
+  ...900/1000 trees done
+  ...1000/1000 trees done
+Loading bootstrap trees from ../../tree_346_sensitivity.ufboot ...
+Loaded 1000 trees.
+
+n_tips used per tree: 271
+
+=== Phylogenetic-uncertainty summary across bootstrap trees ===
+Trees tested: 1000  (permutations per tree: 999)
+observed/null_mean %% ratio: median=62.7%%  IQR=[62.1%%, 63.8%%]  range=[58.5%%, 67.4%%]
+empirical p-value: median=0.0000  max=0.0000
+trees with p < 0.05: 1000/1000 (100.0%%)
