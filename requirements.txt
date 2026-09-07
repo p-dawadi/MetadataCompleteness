@@ -1,3 +1,0 @@
-pandas>=2.0
-dendropy>=4.6
-openpyxl>=3.1
