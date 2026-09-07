@@ -187,18 +187,6 @@ python code/bootstrap_support_distribution.py trees/350_primary/tree_350_primary
 python code/bootstrap_support_distribution.py trees/346_sensitivity/tree_346_sensitivity.treefile
 ```
 
-## What's excluded, and why
-
-- **SILVA reference database** (`SILVA_144_SSURef_NR99_tax_silva_trunc.fasta` and its
-  BLAST index) — a large (~2 GB) public third-party database, not this study's own
-  generated data. Available from the [SILVA project](https://www.arb-silva.de/) directly
-  (release 144).
-- **`retrieval.log`** — see the note under step 1.
-- **`run_iqtree.pbs`** — see the note under step 6; the real commands are documented there
-  instead.
-- **`.ckp.gz` IQ-TREE checkpoint files** — resume-only, no analytical content.
-- Redundant duplicate log files and OS artifacts (`__pycache__`, `.DS_Store`).
-
 ## Dependencies
 
 - Python 3 with `biopython`, `pandas`, `requests`, `dendropy`
